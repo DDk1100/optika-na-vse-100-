@@ -1,0 +1,1802 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оптика на все 100! — Салон оптики в Москве, Троицк</title>
+    <meta name="description" content="Салон оптики «На все 100!» в Москве, район Троицк. Подбор очков, контактные линзы, ремонт, диагностика зрения. Ул. 3-я Нововатутинская, д. 4.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* ============================================
+           1. ПЕРЕМЕННЫЕ И БАЗОВЫЕ СТИЛИ
+           ============================================ */
+        :root {
+            --color-primary: #2c3e8f;
+            --color-primary-dark: #1e2c6b;
+            --color-primary-light: #4a5db8;
+            --color-accent: #e8edff;
+            --color-bg: #ffffff;
+            --color-bg-alt: #f4f6fb;
+            --color-text: #1a1a2e;
+            --color-text-light: #6b7280;
+            --color-border: #e5e7eb;
+            --color-white: #ffffff;
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 20px rgba(44,62,143,0.10);
+            --shadow-lg: 0 12px 40px rgba(44,62,143,0.15);
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --header-height: 72px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--header-height);
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ============================================
+           2. АНИМАЦИИ
+           ============================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* ============================================
+           3. ШАПКА САЙТА (NAVBAR)
+           ============================================ */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid transparent;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header.scrolled {
+            background: rgba(255,255,255,0.98);
+            border-bottom-color: var(--color-border);
+            box-shadow: var(--shadow-sm);
+            height: 64px;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--color-primary);
+            letter-spacing: -0.5px;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--color-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+            font-size: 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--color-text-light);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-primary);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .header-contacts {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-phone {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--color-primary);
+            color: var(--color-white);
+            transform: translateY(-2px);
+        }
+
+        .btn-white {
+            background: var(--color-white);
+            color: var(--color-primary);
+        }
+
+        .btn-white:hover {
+            background: var(--color-accent);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-sm {
+            padding: 10px 20px;
+            font-size: 0.85rem;
+        }
+
+        .btn-lg {
+            padding: 16px 32px;
+            font-size: 1rem;
+        }
+
+        /* Бургер-меню */
+        .burger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+
+        .burger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--color-text);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .burger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .burger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .burger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Мобильное меню */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 360px;
+            height: 100vh;
+            background: var(--color-white);
+            z-index: 999;
+            padding: 100px 32px 32px;
+            box-shadow: -10px 0 40px rgba(0,0,0,0.1);
+            transition: right 0.4s ease;
+        }
+
+        .mobile-menu.open {
+            right: 0;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 16px 0;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--color-text);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .mobile-menu .btn {
+            width: 100%;
+            margin-top: 24px;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 998;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .overlay.open {
+            opacity: 1;
+        }
+
+        /* ============================================
+           4. ГЛАВНЫЙ БАННЕР (HERO)
+           ============================================ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: var(--header-height);
+            background: linear-gradient(160deg, #f4f6fb 0%, #ffffff 40%, #e8edff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(44,62,143,0.06) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(44,62,143,0.04) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--color-white);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.15;
+            color: var(--color-text);
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 span {
+            color: var(--color-primary);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--color-text-light);
+            margin-bottom: 32px;
+            max-width: 500px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-visual-card {
+            width: 100%;
+            max-width: 420px;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+            border-radius: var(--radius-lg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+            padding: 40px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            animation: float 6s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-visual-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15) 0%, transparent 60%);
+        }
+
+        .hero-visual-card i {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-visual-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-visual-card p {
+            font-size: 0.9rem;
+            opacity: 0.85;
+            color: var(--color-white);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ============================================
+           5. ПРЕИМУЩЕСТВА
+           ============================================ */
+        .features {
+            padding: 100px 0;
+            background: var(--color-bg);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto 60px;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-primary);
+            margin-bottom: 12px;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            font-weight: 800;
+            color: var(--color-text);
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-header p {
+            font-size: 1rem;
+            color: var(--color-text-light);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--color-bg-alt);
+            border-radius: var(--radius-md);
+            padding: 32px 24px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--color-accent);
+            background: var(--color-white);
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--color-primary);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+            font-size: 1.3rem;
+            margin: 0 auto 20px;
+        }
+
+        .feature-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            line-height: 1.5;
+        }
+
+        /* ============================================
+           6. КАТАЛОГ
+           ============================================ */
+        .catalog {
+            padding: 100px 0;
+            background: var(--color-bg-alt);
+        }
+
+        .catalog-filters {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+        }
+
+        .filter-btn {
+            padding: 10px 24px;
+            border-radius: 100px;
+            border: 1.5px solid var(--color-border);
+            background: var(--color-white);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--color-text-light);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+        }
+
+        .filter-btn.active {
+            background: var(--color-primary);
+            border-color: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .product-card {
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid var(--color-border);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: transparent;
+        }
+
+        .product-card.hidden {
+            display: none;
+        }
+
+        .product-image {
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, #eef1f8 0%, #dfe5f5 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image i {
+            font-size: 3.5rem;
+            color: var(--color-primary);
+            opacity: 0.3;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-image i {
+            transform: scale(1.15);
+            opacity: 0.5;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            padding: 4px 12px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            font-size: 0.7rem;
+            font-weight: 600;
+            border-radius: 100px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .product-info {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-category {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-primary);
+            margin-bottom: 6px;
+        }
+
+        .product-info h3 {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .product-price {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            margin-bottom: 16px;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: auto;
+        }
+
+        .product-actions .btn {
+            flex: 1;
+            padding: 10px 12px;
+            font-size: 0.8rem;
+        }
+
+        /* ============================================
+           7. О НАС
+           ============================================ */
+        .about {
+            padding: 100px 0;
+            background: var(--color-bg);
+        }
+
+        .about-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image {
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+            border-radius: var(--radius-lg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+            padding: 40px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 70% 30%, rgba(255,255,255,0.1) 0%, transparent 60%);
+        }
+
+        .about-image i {
+            font-size: 4rem;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-image h3 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-content h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .about-content p {
+            font-size: 1rem;
+            color: var(--color-text-light);
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: var(--color-bg-alt);
+            border-radius: var(--radius-md);
+        }
+
+        .stat-number {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--color-text-light);
+        }
+
+        /* ============================================
+           8. КОНТАКТЫ
+           ============================================ */
+        .contacts {
+            padding: 100px 0;
+            background: var(--color-bg-alt);
+        }
+
+        .contacts-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+        }
+
+        .contact-card {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-item-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--color-accent);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-primary);
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item h4 {
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .contact-item p,
+        .contact-item a {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            line-height: 1.5;
+        }
+
+        .contact-item a:hover {
+            color: var(--color-primary);
+        }
+
+        .map-block {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            background: linear-gradient(135deg, #e8edff 0%, #d4dcf5 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+            position: relative;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .map-block::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(44,62,143,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(44,62,143,0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .map-block-content {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            padding: 40px;
+        }
+
+        .map-block-content i {
+            font-size: 3rem;
+            color: var(--color-primary);
+            margin-bottom: 16px;
+        }
+
+        .map-block-content h3 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .map-block-content p {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            margin-bottom: 20px;
+        }
+
+        /* ============================================
+           9. ФУТЕР
+           ============================================ */
+        .footer {
+            background: var(--color-primary-dark);
+            color: rgba(255,255,255,0.8);
+            padding: 60px 0 30px;
+        }
+
+        .footer-inner {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand .logo {
+            color: var(--color-white);
+            margin-bottom: 16px;
+        }
+
+        .footer-brand .logo-icon {
+            background: var(--color-white);
+            color: var(--color-primary);
+        }
+
+        .footer-brand p {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            max-width: 300px;
+        }
+
+        .footer h4 {
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--color-white);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--color-white);
+            padding-left: 4px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.8rem;
+        }
+
+        /* ============================================
+           10. МОДАЛЬНОЕ ОКНО
+           ============================================ */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.open {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            max-width: 480px;
+            width: 100%;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+            box-shadow: var(--shadow-lg);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-overlay.open .modal {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            background: var(--color-bg-alt);
+            color: var(--color-text-light);
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            background: var(--color-accent);
+            color: var(--color-primary);
+        }
+
+        .modal h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .modal > p {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1.5px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            color: var(--color-text);
+            transition: var(--transition);
+            background: var(--color-bg-alt);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            background: var(--color-white);
+            box-shadow: 0 0 0 3px rgba(44,62,143,0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .modal .btn {
+            width: 100%;
+            margin-top: 8px;
+        }
+
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .form-success i {
+            font-size: 3rem;
+            color: #22c55e;
+            margin-bottom: 16px;
+        }
+
+        .form-success h3 {
+            margin-bottom: 8px;
+        }
+
+        .form-success p {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+        }
+
+        /* Плавающая кнопка звонка */
+        .floating-call {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--color-primary);
+            color: var(--color-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow-lg);
+            z-index: 900;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .floating-call:hover {
+            background: var(--color-primary-dark);
+            transform: scale(1.1);
+        }
+
+        /* ============================================
+           11. АДАПТИВНОСТЬ
+           ============================================ */
+        @media (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .catalog-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .footer-inner {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links,
+            .header-contacts {
+                display: none;
+            }
+            .burger {
+                display: flex;
+            }
+            .mobile-menu {
+                display: block;
+            }
+            .hero-inner {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero p {
+                margin: 0 auto 32px;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .hero-visual {
+                order: -1;
+            }
+            .hero-visual-card {
+                max-width: 300px;
+            }
+            .about-inner {
+                grid-template-columns: 1fr;
+            }
+            .about-image {
+                order: -1;
+            }
+            .contacts-inner {
+                grid-template-columns: 1fr;
+            }
+            .catalog-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-inner {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .catalog-grid {
+                grid-template-columns: 1fr;
+            }
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+            .product-actions {
+                flex-direction: column;
+            }
+            .hero-visual-card {
+                padding: 24px;
+            }
+            .modal {
+                padding: 24px;
+            }
+            .contact-card {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         ШАПКА
+         ============================================ -->
+    <header class="header" id="header">
+        <div class="container header-inner">
+            <!-- Логотип -->
+            <a href="#" class="logo">
+                <span class="logo-icon"><i class="fas fa-eye"></i></span>
+                ОПТИКА<br><span style="font-weight:400;font-size:0.7em;letter-spacing:0;">на все 100!</span>
+            </a>
+
+            <!-- Навигация -->
+            <nav class="nav-links">
+                <a href="#features">Преимущества</a>
+                <a href="#catalog">Каталог</a>
+                <a href="#about">О нас</a>
+                <a href="#contacts">Контакты</a>
+            </nav>
+
+            <!-- Контакты и кнопка -->
+            <div class="header-contacts">
+                <a href="tel:+79150046797" class="header-phone">
+                    <i class="fas fa-phone"></i> +7 (915) 004-67-97
+                </a>
+                <button class="btn btn-primary btn-sm" onclick="openModal()">
+                    <i class="fas fa-calendar-check"></i> Записаться
+                </button>
+            </div>
+
+            <!-- Бургер -->
+            <button class="burger" id="burger" aria-label="Меню">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Мобильное меню -->
+    <div class="overlay" id="overlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#features" onclick="closeMenu()">Преимущества</a>
+        <a href="#catalog" onclick="closeMenu()">Каталог</a>
+        <a href="#about" onclick="closeMenu()">О нас</a>
+        <a href="#contacts" onclick="closeMenu()">Контакты</a>
+        <button class="btn btn-primary" onclick="closeMenu(); openModal();">
+            <i class="fas fa-calendar-check"></i> Записаться на приём
+        </button>
+    </div>
+
+    <!-- ============================================
+         ГЛАВНЫЙ БАННЕР
+         ============================================ -->
+    <section class="hero">
+        <div class="container hero-inner">
+            <div class="hero-content reveal">
+                <div class="hero-badge">
+                    <i class="fas fa-star"></i> Более 100 довольных клиентов
+                </div>
+                <h1>Зрение, которое<br><span>на все 100!</span></h1>
+                <p>Современный салон оптики в Троицке. Подбор очков и линз, диагностика зрения, ремонт и изготовление очков любой сложности.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary btn-lg" onclick="openModal()">
+                        <i class="fas fa-calendar-check"></i> Записаться на приём
+                    </button>
+                    <a href="#catalog" class="btn btn-outline btn-lg">
+                        <i class="fas fa-glasses"></i> Смотреть каталог
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual reveal reveal-delay-2">
+                <div class="hero-visual-card">
+                    <i class="fas fa-glasses"></i>
+                    <h3>Подбор очков</h3>
+                    <p>Профессиональная диагностика и индивидуальный подход к каждому клиенту</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         ПРЕИМУЩЕСТВА
+         ============================================ -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Почему мы</span>
+                <h2>Наши преимущества</h2>
+                <p>Мы делаем всё, чтобы вы видели мир ярко и чётко</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card reveal">
+                    <div class="feature-icon"><i class="fas fa-eye"></i></div>
+                    <h3>Диагностика зрения</h3>
+                    <p>Современное оборудование и опытные специалисты</p>
+                </div>
+                <div class="feature-card reveal reveal-delay-1">
+                    <div class="feature-icon"><i class="fas fa-tools"></i></div>
+                    <h3>Ремонт очков</h3>
+                    <p>Быстрый и качественный ремонт любой сложности</p>
+                </div>
+                <div class="feature-card reveal reveal-delay-2">
+                    <div class="feature-icon"><i class="fas fa-tags"></i></div>
+                    <h3>Доступные цены</h3>
+                    <p>Широкий ассортимент оправ и линз на любой вкус</p>
+                </div>
+                <div class="feature-card reveal reveal-delay-3">
+                    <div class="feature-icon"><i class="fas fa-heart"></i></div>
+                    <h3>Индивидуальный подход</h3>
+                    <p>Поможем подобрать очки, которые подчеркнут вашу индивидуальность</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         КАТАЛОГ
+         ============================================ -->
+    <section class="catalog" id="catalog">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Ассортимент</span>
+                <h2>Наш каталог</h2>
+                <p>Выберите категорию, чтобы посмотреть товары</p>
+            </div>
+
+            <!-- Фильтры -->
+            <div class="catalog-filters reveal">
+                <button class="filter-btn active" data-filter="all">Все товары</button>
+                <button class="filter-btn" data-filter="men">Мужские оправы</button>
+                <button class="filter-btn" data-filter="women">Женские оправы</button>
+                <button class="filter-btn" data-filter="kids">Детские оправы</button>
+                <button class="filter-btn" data-filter="sunglasses">Солнцезащитные очки</button>
+                <button class="filter-btn" data-filter="lenses">Контактные линзы</button>
+            </div>
+
+            <!-- Сетка товаров -->
+            <div class="catalog-grid" id="catalogGrid">
+                <!-- Товары будут добавлены через JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         О НАС
+         ============================================ -->
+    <section class="about" id="about">
+        <div class="container about-inner">
+            <div class="about-image reveal">
+                <i class="fas fa-store"></i>
+                <h3>Салон оптики «На все 100!»</h3>
+                <p style="opacity:0.8;margin-top:8px;">Ваш надёжный помощник в мире оптики</p>
+            </div>
+            <div class="about-content reveal reveal-delay-1">
+                <span class="section-label">О нас</span>
+                <h2>Заботимся о вашем зрении</h2>
+                <p>Салон оптики «На все 100!» — это современный магазин, где вы можете не только приобрести качественные очки и контактные линзы, но и получить профессиональную консультацию специалиста.</p>
+                <p>Мы работаем с 2014 года и за это время помогли тысячам клиентов обрести комфортное и чёткое зрение. Наши специалисты постоянно совершенствуют свои навыки и следят за новинками в мире оптики.</p>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">лет на рынке</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">5000+</div>
+                        <div class="stat-label">довольных клиентов</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">гарантия качества</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         КОНТАКТЫ
+         ============================================ -->
+    <section class="contacts" id="contacts">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Контакты</span>
+                <h2>Как нас найти</h2>
+                <p>Мы всегда рады помочь вам</p>
+            </div>
+            <div class="contacts-inner">
+                <div class="contact-card reveal">
+                    <div class="contact-item">
+                        <div class="contact-item-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <h4>Адрес</h4>
+                            <p>г. Москва, пос. Десеновское,<br>ул. 3-я Нововатутинская, д. 4</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon"><i class="fas fa-phone"></i></div>
+                        <div>
+                            <h4>Телефон</h4>
+                            <a href="tel:+79150046797">+7 (915) 004-67-97</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <h4>Email</h4>
+                            <a href="mailto:optika100@mail.ru">optika100@mail.ru</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon"><i class="fas fa-clock"></i></div>
+                        <div>
+                            <h4>Режим работы</h4>
+                            <p>Пн–Пт: 10:00 – 20:00<br>Сб–Вс: 10:00 – 18:00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-block reveal reveal-delay-1">
+                    <div class="map-block-content">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <h3>Мы на карте</h3>
+                        <p>ул. 3-я Нововатутинская, д. 4<br>Москва, пос. Десеновское</p>
+                        <a href="https://yandex.ru/maps/?text=Москва,+3-я+Нововатутинская+улица,+4" target="_blank" class="btn btn-primary btn-sm">
+                            <i class="fas fa-external-link-alt"></i> Открыть в Яндекс.Картах
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         ФУТЕР
+         ============================================ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <span class="logo-icon"><i class="fas fa-eye"></i></span>
+                        ОПТИКА на все 100!
+                    </a>
+                    <p>Современный салон оптики в Троицке. Подбор очков, контактные линзы, диагностика зрения и ремонт.</p>
+                </div>
+                <div>
+                    <h4>Навигация</h4>
+                    <ul class="footer-links">
+                        <li><a href="#features">Преимущества</a></li>
+                        <li><a href="#catalog">Каталог</a></li>
+                        <li><a href="#about">О нас</a></li>
+                        <li><a href="#contacts">Контакты</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Контакты</h4>
+                    <ul class="footer-links">
+                        <li><a href="tel:+79150046797">+7 (915) 004-67-97</a></li>
+                        <li><a href="mailto:optika100@mail.ru">optika100@mail.ru</a></li>
+                        <li>г. Москва, пос. Десеновское,<br>ул. 3-я Нововатутинская, д. 4</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2025 Оптика «На все 100!». Все права защищены.</span>
+                <span>Сделано с <i class="fas fa-heart" style="color:#ef4444;"></i> для вашего зрения</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================
+         МОДАЛЬНОЕ ОКНО
+         ============================================ -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+            <div id="modalForm">
+                <h3>Записаться на приём</h3>
+                <p>Оставьте заявку, и мы свяжемся с вами для подтверждения</p>
+                <form id="appointmentForm">
+                    <div class="form-group">
+                        <label for="name">Ваше имя *</label>
+                        <input type="text" id="name" placeholder="Иван Иванов" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон *</label>
+                        <input type="tel" id="phone" placeholder="+7 (___) ___-__-__" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Услуга</label>
+                        <select id="service">
+                            <option value="Подбор очков">Подбор очков</option>
+                            <option value="Проверка зрения">Проверка зрения</option>
+                            <option value="Ремонт очков">Ремонт очков</option>
+                            <option value="Консультация">Консультация</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment">Комментарий</label>
+                        <textarea id="comment" placeholder="Удобное время для звонка..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Отправить заявку
+                    </button>
+                </form>
+            </div>
+            <div class="form-success" id="formSuccess">
+                <i class="fas fa-check-circle"></i>
+                <h3>Заявка отправлена!</h3>
+                <p>Мы свяжемся с вами в ближайшее время.</p>
+                <button class="btn btn-primary" onclick="closeModal()" style="margin-top:20px;">Отлично</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Плавающая кнопка звонка -->
+    <button class="floating-call" onclick="openModal()" title="Заказать звонок">
+        <i class="fas fa-phone"></i>
+    </button>
+
+    <!-- ============================================
+         JAVASCRIPT
+         ============================================ -->
+    <script>
+        // ============================================
+        // 1. ДАННЫЕ КАТАЛОГА
+        // ============================================
+        const products = [
+            // Мужские оправы
+            { id: 1, category: 'men', categoryName: 'Мужские оправы', name: 'Оправа Ray-Ban RB5154', price: '8 990 ₽', icon: 'fa-glasses', badge: 'Хит' },
+            { id: 2, category: 'men', categoryName: 'Мужские оправы', name: 'Оправа Police VPLD21', price: '6 490 ₽', icon: 'fa-glasses', badge: '' },
+            { id: 3, category: 'men', categoryName: 'Мужские оправы', name: 'Оправа Carrera 8843', price: '7 990 ₽', icon: 'fa-glasses', badge: 'Новинка' },
+            { id: 4, category: 'men', categoryName: 'Мужские оправы', name: 'Оправа BMW X Series', price: '12 990 ₽', icon: 'fa-glasses', badge: '' },
+
+            // Женские оправы
+            { id: 5, category: 'women', categoryName: 'Женские оправы', name: 'Оправа Vogue VO5276', price: '5 990 ₽', icon: 'fa-glasses', badge: 'Хит' },
+            { id: 6, category: 'women', categoryName: 'Женские оправы', name: 'Оправа Prada PR08WV', price: '11 490 ₽', icon: 'fa-glasses', badge: '' },
+            { id: 7, category: 'women', categoryName: 'Женские оправы', name: 'Оправа Michael Kors MK4039', price: '7 490 ₽', icon: 'fa-glasses', badge: 'Скидка' },
+            { id: 8, category: 'women', categoryName: 'Женские оправы', name: 'Оправа Tiffany TF2159', price: '14 990 ₽', icon: 'fa-glasses', badge: '' },
+
+            // Детские оправы
+            { id: 9, category: 'kids', categoryName: 'Детские оправы', name: 'Детская оправа Nano RA031', price: '4 990 ₽', icon: 'fa-child', badge: 'Хит' },
+            { id: 10, category: 'kids', categoryName: 'Детские оправы', name: 'Детская оправа Ray-Ban RY1056', price: '6 490 ₽', icon: 'fa-child', badge: '' },
+            { id: 11, category: 'kids', categoryName: 'Детские оправы', name: 'Детская оправа Disney D101', price: '3 490 ₽', icon: 'fa-child', badge: 'Новинка' },
+            { id: 12, category: 'kids', categoryName: 'Детские оправы', name: 'Детская оправа Marvel MV010', price: '3 990 ₽', icon: 'fa-child', badge: '' },
+
+            // Солнцезащитные очки
+            { id: 13, category: 'sunglasses', categoryName: 'Солнцезащитные очки', name: 'Солнцезащитные Ray-Ban Aviator', price: '9 990 ₽', icon: 'fa-sun', badge: 'Хит' },
+            { id: 14, category: 'sunglasses', categoryName: 'Солнцезащитные очки', name: 'Солнцезащитные Oakley Holbrook', price: '12 490 ₽', icon: 'fa-sun', badge: '' },
+            { id: 15, category: 'sunglasses', categoryName: 'Солнцезащитные очки', name: 'Солнцезащитные Gucci GG0010S', price: '18 990 ₽', icon: 'fa-sun', badge: 'Люкс' },
+            { id: 16, category: 'sunglasses', categoryName: 'Солнцезащитные очки', name: 'Солнцезащитные Polaroid PLD 7045', price: '4 990 ₽', icon: 'fa-sun', badge: 'Скидка' },
+
+            // Контактные линзы
+            { id: 17, category: 'lenses', categoryName: 'Контактные линзы', name: 'Линзы Acuvue Oasys (6 шт.)', price: '2 490 ₽', icon: 'fa-eye', badge: 'Хит' },
+            { id: 18, category: 'lenses', categoryName: 'Контактные линзы', name: 'Линзы Dailies Total1 (30 шт.)', price: '3 990 ₽', icon: 'fa-eye', badge: '' },
+            { id: 19, category: 'lenses', categoryName: 'Контактные линзы', name: 'Линзы Air Optix plus HydraGlyde (6 шт.)', price: '2 190 ₽', icon: 'fa-eye', badge: 'Новинка' },
+            { id: 20, category: 'lenses', categoryName: 'Контактные линзы', name: 'Линзы Biofinity (6 шт.)', price: '2 790 ₽', icon: 'fa-eye', badge: '' },
+        ];
+
+        // ============================================
+        // 2. РЕНДЕР КАТАЛОГА
+        // ============================================
+        const catalogGrid = document.getElementById('catalogGrid');
+
+        function renderProducts(filter = 'all') {
+            const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
+
+            catalogGrid.innerHTML = filtered.map((product, index) => `
+                <div class="product-card reveal ${'reveal-delay-' + ((index % 4) + 1)}" data-category="${product.category}">
+                    <div class="product-image">
+                        <i class="fas ${product.icon}"></i>
+                        ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">${product.categoryName}</div>
+                        <h3>${product.name}</h3>
+                        <div class="product-price">${product.price}</div>
+                        <div class="product-actions">
+                            <button class="btn btn-primary" onclick="openModal('${product.name}')">
+                                <i class="fas fa-shopping-cart"></i> Заказать
+                            </button>
+                            <button class="btn btn-outline" onclick="openModal('${product.name}')">
+                                Подробнее
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            // Перезапуск анимации появления
+            initReveal();
+        }
+
+        // ============================================
+        // 3. ФИЛЬТРАЦИЯ
+        // ============================================
+        const filterButtons = document.querySelectorAll('.filter-btn');
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderProducts(btn.dataset.filter);
+            });
+        });
+
+        // ============================================
+        // 4. АНИМАЦИЯ ПОЯВЛЕНИЯ ПРИ СКРОЛЛЕ
+        // ============================================
+        function initReveal() {
+            const revealElements = document.querySelectorAll('.reveal:not(.visible)');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            revealElements.forEach(el => observer.observe(el));
+        }
+
+        // ============================================
+        // 5. ИНТЕРАКТИВНАЯ ШАПКА
+        // ============================================
+        const header = document.getElementById('header');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // ============================================
+        // 6. МОБИЛЬНОЕ МЕНЮ
+        // ============================================
+        const burger = document.getElementById('burger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('overlay');
+
+        burger.addEventListener('click', () => {
+            burger.classList.toggle('active');
+            mobileMenu.classList.toggle('open');
+            overlay.classList.toggle('open');
+            document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+        });
+
+        function closeMenu() {
+            burger.classList.remove('active');
+            mobileMenu.classList.remove('open');
+            overlay.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        overlay.addEventListener('click', closeMenu);
+
+        // Закрытие меню по клику на ссылку
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        // ============================================
+        // 7. МОДАЛЬНОЕ ОКНО
+        // ============================================
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalForm = document.getElementById('modalForm');
+        const formSuccess = document.getElementById('formSuccess');
+
+        function openModal(productName = '') {
+            modalOverlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            modalForm.style.display = 'block';
+            formSuccess.style.display = 'none';
+
+            // Если указан товар, можно подставить в комментарий
+            if (productName) {
+                document.getElementById('comment').value = `Интересует: ${productName}`;
+            }
+
+            // Фокус на первое поле
+            setTimeout(() => {
+                document.getElementById('name').focus();
+            }, 300);
+        }
+
+        function closeModal() {
+            modalOverlay.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) closeModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+                closeMenu();
+            }
+        });
+
+        // Обработка формы
+        document.getElementById('appointmentForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Здесь можно добавить отправку данных на сервер
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+
+            console.log('Заявка:', { name, phone });
+
+            // Показываем успех
+            modalForm.style.display = 'none';
+            formSuccess.style.display = 'block';
+
+            // Очищаем форму
+            e.target.reset();
+        });
+
+        // ============================================
+        // 8. ПЛАВНЫЙ СКРОЛЛ ДЛЯ ССЫЛОК
+        // ============================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // ============================================
+        // 9. ИНИЦИАЛИЗАЦИЯ
+        // ============================================
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts('all');
+            initReveal();
+        });
+    </script>
+</body>
+</html>
